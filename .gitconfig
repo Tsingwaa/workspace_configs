@@ -4,8 +4,8 @@
 [color]
   ui = auto
 [init]
-	defaultBranch = main
-[http "https://github.com"]
+  defaultBranch = main
+[http "github.com"]
   proxy = socks5://172.18.168.10:11089
-[https "https://github.com"]
+[https "github.com"]
   proxy = socks5://172.18.168.10:11089
