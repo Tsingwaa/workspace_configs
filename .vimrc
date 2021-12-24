@@ -1,9 +1,9 @@
 "   .  . .  .  . .  . S@t.. .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  ..
 "    .     ..t%SXSS%:;t.X8S% .   .      .       .       .       .       .       .       .       .       .       .       .
 "      . %St8;8:X;8:8:8%8;%%:@S:    . .    . .    ....    .  .    .  .    .  .    .  .    .  .    .  .    .  .    .  ....
-"  .    8: %.;t;S;%@88:X.8X8%;8S t@@%   .  %@@t  .X88X .      .       .   %@@@@@@@@@X:  .     .       .       .       .  
+"  .    8: %.;t;S;%@88:X.8X8%;8S t@@%   .  %@@t  .X88X .      .       .   %@@@@@@@@@X:  .     .       .       .       .
 "    ..X.;X%8t8%8ttX.88;8.8%:;% ;8:SX%.   SX.8S.  St88:  .  .   .  .    ..XS.@%SSS88S@:. X@@%  . . .    .  .    .  ......
-"   . X;:;8SS888;8tt;8:8:8; t:t8S 8:Xt.  :8888: .%888:.  .SSSSSSSSSSS%:  .S888t   @@8X: .%.88  .SSt  .:SS;  .%SSSSSSSS%. 
+"   . X;:;8SS888;8tt;8:8:8; t:t8S 8:Xt.  :8888: .%888:.  .SSSSSSSSSSS%:  .S888t   @@8X: .%.88  .SSt  .:SS;  .%SSSSSSSS%.
 "    :t8 :;X8S;8.8S;8S.8.t8:%8XS.. S8.8:.S8;8;  :@;@88 . S:88 X.88@88:@t..%S.  .. X;8@: :%:;8. X%:X;. 8;.;  %S8@XXSXSS8..
 "  .t88; X;8S8888;8S8t 8S88SSStt:. @.%8St;@8X  . t .8S   S:88:%888%;8t8:..S.S@%SSS8S88t .% @;  X:.X.  88t :.t@t8@ .......
 "  8; :888XSStS;88;88X%;;tt::;;8@ ..%X88:88Xt    .S@.::. S@8% X8.@;S888X .%;88SSSS.SX.:. 8S88: @;88t. 8.S8  t;@8@88@88S..
@@ -11,7 +11,7 @@
 "    :8:;888888 .; .     8%8@       .8X.@8X  .    X%8@  .t@8S X88X:%888X .@8@8t  ..  .   SX%X .X;;S@%tS8; ;..SttSXS8888S.
 "    t.8XX;;8X% XX.  .    %8X8;   . :tX8@t     .  t8X8:  %@@S X8@@:t8tXt...:%t..       . X:8X  X8@@88@888t. %88t888 888t.
 "  .    :8;S: . S@.       t8;8:: .   .;:;. . .   .%@%:   t%%; .%%;..: t. .;  :  . . .    %;8.  ;X;X%.:.: t  ;t  ;:: :t;..
-"     :%@t%8   88.  .  .  :: . ..   .   .          .   . ..  .      ..   .    .       . . ... .   . .   .        ..      
+"     :%@t%8   88.  .  .  :: . ..   .   .          .   . ..  .      ..   .    .       . . ... .   . .   .        ..
 "      .. 8888   ..      ...   . .    .   .  . .     .   ..    .  .    .        .   .   . ..    .  .  .   .  . .     ....
 "
 " Author: chxuan <787280310@qq.com>
@@ -30,7 +30,7 @@ set noeb                 " 关闭错误的提示
 syntax enable            " 开启语法高亮功能
 syntax on                " 自动语法高亮
 " set cursorcolumn         " 设置光标所在列高亮
-set mouse=a              " 开启鼠标
+" set mouse=a              " 开启鼠标
 set t_Co=256             " 开启256色支持
 set cmdheight=2          " 设置命令行的高度
 set textwidth=90         " 最大行字符数
@@ -63,7 +63,7 @@ set nowrap               " 禁止折行
 set backspace=2          " 使用回车键正常处理indent,eol,start等
 set sidescroll=10        " 设置向右滚动字符数
 set nofoldenable         " 禁用折叠代码
- 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 代码补全
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -167,13 +167,47 @@ Plug 'terryma/vim-smooth-scroll'
 Plug 'rhysd/clever-f.vim'
 Plug 'vim-scripts/indentpython.vim'
 
-Plug 'prabirshrestha/vim-lsp'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python'  }
 Plug 'Chiel92/vim-autoformat'
 Plug 'davidhalter/jedi-vim'
+Plug 'dense-analysis/ale'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
+
+""""""""""""""""""""""""""""""""""""" ale-setting
+let g:ale_set_highlights = 0
+"自定义error和warning图标
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
+"在vim自带的状态栏中整合ale
+let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+"显示Linter名称,出错或警告等相关信息
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"打开文件时不进行检查
+let g:ale_lint_on_enter = 0
+" Set this variable to 1 to fix files when you save them.
+let g:ale_fix_on_save = 1
+" 普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+nmap sp <Plug>(ale_previous_wrap)
+nmap sn <Plug>(ale_next_wrap)
+" <Leader>s 触发/关闭语法检查
+nmap <Leader>S :ALEToggle<CR>
+" <Leader>d查看错误或警告的详细信息
+nmap <Leader>D :ALEDetail<CR>
+" 使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
+let g:ale_linters = {
+      \   'python': ['flake8'],
+      \}
+" fix
+let g:ale_fixers = {
+            \ 'python' : ['yapf', 'isort', 'autopep8']
+            \}
+noremap <F2> :ALEFix<cr>
 
 " load vim default plugin
 runtime macros/matchit.vim
@@ -257,8 +291,8 @@ let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
 let g:NERDTreeHighlightCursorline = 1
-let g:NERDTreeHighlightFolders = 1         
-let g:NERDTreeHighlightFoldersFullName = 1 
+let g:NERDTreeHighlightFolders = 1
+let g:NERDTreeHighlightFoldersFullName = 1
 let g:NERDTreeDirArrowExpandable='▶'
 let g:NERDTreeDirArrowCollapsible='▼'
 let g:NERDTreeIgnore = ['__pycache__', '\.pyc$', '\.tar']
@@ -338,24 +372,24 @@ inoremap <expr> <C-J> pumvisible() ? "<PageDown>\<C-N>\<C-P>" : "<C-X>\<C-O>"
 inoremap <expr> <C-K> pumvisible() ? "<PageUp>\<C-P>\<C-N>" : "\<C-K>"
 
 " vim-lsp
-if executable('pyls')
-        au User lsp_setup call lsp#register_server({
-                                \ 'name': 'pyls',
-                                \ 'cmd': {server_info->['pyls']},
-                                \ 'whitelist': ['python'],
-                                \})
-endif
+" if executable('pyls')
+"         au User lsp_setup call lsp#register_server({
+"                                 \ 'name': 'pyls',
+"                                 \ 'cmd': {server_info->['pyls']},
+"                                 \ 'whitelist': ['python'],
+"                                 \})
+" endif
 
 " Jedi-vim
 let g:jedi#show_call_signatures = "1"
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_stubs_command = "<leader>s"
-let g:jedi#goto_definitions_command = ""
+let g:jedi#goto_command = "gd"
+" let g:jedi#goto_assignments_command = "<leader>g"
+" let g:jedi#goto_stubs_command = "<leader>s"
+" let g:jedi#goto_definitions_command = ""
 let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>u"
+let g:jedi#usages_command = "gu"
 " let g:jedi#completions_command = "<C-m>"
-let g:jedi#rename_command = "<leader>r"
+let g:jedi#rename_command = "gr"
 
 " Pydocstring
 " let g:pydocstring_ignore_init = 1
@@ -392,7 +426,7 @@ endf
 " Update filehead comment 'Last modified' and 'Filaname'
 function UpdateFileComment()
     let l = 1
-    let flag = 0 
+    let flag = 0
     while l < 10
         let line = getline(l)
         if line =~ '^\# Last modified'
@@ -413,13 +447,12 @@ function UpdateFileComment()
     call AddFileComment()
 endfunction
 
-" Add Filecomment when create new python file. 
-autocmd BufNewFile *.py exec ":call AddFileComment()"                                                                                       
-" autocmd BufNewFile,BufWrite *.py exec ":call UpdateFileComment()"                                                                                       
+" Add Filecomment when create new python file.
+autocmd BufNewFile *.py exec ":call AddFileComment()"
+" autocmd BufNewFile,BufWrite *.py exec ":call UpdateFileComment()"
 
 " Manually update filecomment
 map <F4> :call UpdateFileComment()<cr>
 
 " 自动将光标移动到文件末尾
-autocmd BufNewfile * normal G
-
+" autocmd BufNewfile * normal G
