@@ -1,11 +1,11 @@
 [user]
-  name = waa
-  email = zengchh3@gmail.com
+    name = waa
+    email = zengchh3@gmail.com
 [color]
-  ui = auto
+    ui = auto
 [init]
-  defaultBranch = main
-[http "github.com"]
-  proxy = socks5://172.18.168.10:11089
-[https "github.com"]
-  proxy = socks5://172.18.168.10:11089
+    defaultBranch = main
+[http "https://github.com"]
+	proxy = socks5://172.18.168.10:11089
+[https "https://github.com"]
+    proxy = socks5://172.18.168.10:11089

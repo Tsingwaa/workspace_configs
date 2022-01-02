@@ -174,11 +174,12 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'davidhalter/jedi-vim'
 Plug 'dense-analysis/ale'
 Plug 'airblade/vim-gitgutter'
+Plug 'ervandew/supertab'
 
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""" ale-setting
-let g:ale_set_highlights = 0
+let g:ale_set_highlights = 1
 "自定义error和warning图标
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚡'
@@ -189,23 +190,23 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "打开文件时不进行检查
-let g:ale_lint_on_enter = 0
+let g:ale_lint_on_enter = 1
 " Set this variable to 1 to fix files when you save them.
 let g:ale_fix_on_save = 1
 " 普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+let g:ale_open_list = 1
+" let g:ale_keep_list_window_open = 1
 nmap sp <Plug>(ale_previous_wrap)
 nmap sn <Plug>(ale_next_wrap)
-" <Leader>s 触发/关闭语法检查
+" <Leader>S 触发/关闭语法检查
 nmap <Leader>S :ALEToggle<CR>
-" <Leader>d查看错误或警告的详细信息
+" <Leader>D 查看错误或警告的详细信息
 nmap <Leader>D :ALEDetail<CR>
-" 使用clang对c和c++进行语法检查，对python使用pylint进行语法检查
-let g:ale_linters = {
-      \   'python': ['flake8'],
-      \}
-" fix
+" 对python使用pylint进行语法检查
+let g:ale_linters = {'python': ['flake8', 'mypy', 'pyls'],}
 let g:ale_fixers = {
-            \ 'python' : ['yapf', 'isort', 'autopep8']
+            \'*': ['remove_trailing_lines', 'trim_whitespace'],
+            \'python': ['yapf', 'isort', 'add_blank_lines_for_python_control_statements', 'autopep8']
             \}
 noremap <F2> :ALEFix<cr>
 
@@ -255,6 +256,7 @@ colorscheme molokai
 let g:airline_theme="onedark"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#ale#enabled = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -276,8 +278,8 @@ inoremap <silent> <F12> <esc> :ShowColorScheme<cr>
 " vim-buffer
 nnoremap <silent> <c-p> :PreviousBuffer<cr>
 nnoremap <silent> <c-n> :NextBuffer<cr>
-nnoremap <silent> <leader>d :CloseBuffer<cr>
-nnoremap <silent> <leader>D :BufOnly<cr>
+" nnoremap <silent> <leader>d :CloseBuffer<cr>
+" nnoremap <silent> <leader>D :BufOnly<cr>
 
 " vim-edit
 nnoremap Y :CopyText<cr>
@@ -347,8 +349,8 @@ nnoremap <leader>F :Ack!<space>
 " let g:echodoc#type = 'floating'
 
 " tabular
-nnoremap <leader>l :Tab /\|<cr>
-nnoremap <leader>= :Tab /=<cr>
+" nnoremap <leader>l :Tab /\|<cr>
+" nnoremap <leader>= :Tab /=<cr>
 
 " vim-smooth-scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
@@ -366,30 +368,28 @@ noremap <F3> :Autoformat<CR>
 let g:autoformat_verbosemode=1
 
 " vim poplist movement
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <C-J> pumvisible() ? "<PageDown>\<C-N>\<C-P>" : "<C-X>\<C-O>"
-inoremap <expr> <C-K> pumvisible() ? "<PageUp>\<C-P>\<C-N>" : "\<C-K>"
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <C-J> pumvisible() ? "<PageDown>\<C-N>\<C-P>" : "<C-X>\<C-O>"
+" inoremap <expr> <C-K> pumvisible() ? "<PageUp>\<C-P>\<C-N>" : "\<C-K>"
 
-" vim-lsp
-" if executable('pyls')
-"         au User lsp_setup call lsp#register_server({
-"                                 \ 'name': 'pyls',
-"                                 \ 'cmd': {server_info->['pyls']},
-"                                 \ 'whitelist': ['python'],
-"                                 \})
-" endif
+" SuperTab
+let g:SuperTabDefaultCompletionType = "context"
 
 " Jedi-vim
-let g:jedi#show_call_signatures = "1"
-let g:jedi#goto_command = "gd"
+" let g:jedi#use_tabs_not_buffers=1
+let g:jedi#smart_auto_mappings=1
+let g:jedi#popup_on_dot = 0
+" let g:jedi#environment_path=""
+" let g:jedi#show_call_signatures = "1"
+" let g:jedi#goto_command = ""
+" let g:jedi#goto_definitions_command = "<leader>d"
 " let g:jedi#goto_assignments_command = "<leader>g"
 " let g:jedi#goto_stubs_command = "<leader>s"
-" let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "gu"
-" let g:jedi#completions_command = "<C-m>"
-let g:jedi#rename_command = "gr"
+" let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>u"
+" let g:jedi#completions_command = "<Tab>"
+" let g:jedi#rename_command = "<leader>r"
 
 " Pydocstring
 " let g:pydocstring_ignore_init = 1
