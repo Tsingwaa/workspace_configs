@@ -6,6 +6,6 @@
 [init]
     defaultBranch = main
 [http "https://github.com"]
-	proxy = socks5://172.18.168.10:11089
+	proxy = socks5://222.200.185.33:11089
 [https "https://github.com"]
-    proxy = socks5://172.18.168.10:11089
+    proxy = socks5://222.200.185.33:11089

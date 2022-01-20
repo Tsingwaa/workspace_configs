@@ -104,13 +104,22 @@ bindkey ',' autosuggest-accept
 
 source /home/chenghua/Applications/Anaconda3/bin/activate imb
 
+alias set_pypath="export PYTHONPATH='$HOME/Projects/classification'"
+
 alias labproxy="export all_proxy='socks5://172.18.168.10:7891'"
-alias myproxy="export all_proxy='socks5://172.18.168.10:11089'"
+alias myproxy="export all_proxy='socks5://222.200.185.33:11089'"
 alias unproxy="unset all_proxy"
 
 alias gpul="git pull gitee main && git pull github main"
 alias gpsh="git push gitee main && git push github main"
+alias gpul_="git pull github"
+alias gpsh_="git push github"
+alias gl="git log"
 alias gs="git status"
-alias gd="git diff"
 alias ga="git add"
 alias gm="git commit -m"
+
+alias sync_vimrc="scp ~/.vimrc 15:~/; scp ~/.vimrc 16:~/; scp ~/.vimrc 97:~/; scp ~/.vimrc mac:~/; scp ~/.vimrc 247:~/;"
+
+alias lg="ls -al | grep $1"
+alias export_workdir="export PYTHONPATH=$PYTHONPATH:$HOME/Projects/classification"

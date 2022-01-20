@@ -367,14 +367,14 @@ nnoremap <leader>gg :GV?<cr>
 noremap <F3> :Autoformat<CR>
 let g:autoformat_verbosemode=1
 
+" SuperTab
+let g:SuperTabDefaultCompletionType = "context"
+
 " vim poplist movement
 " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" inoremap <expr> <C-J> pumvisible() ? "<PageDown>\<C-N>\<C-P>" : "<C-X>\<C-O>"
-" inoremap <expr> <C-K> pumvisible() ? "<PageUp>\<C-P>\<C-N>" : "\<C-K>"
-
-" SuperTab
-let g:SuperTabDefaultCompletionType = "context"
+inoremap <expr> <C-J> pumvisible() ? "<PageDown>\<C-N>\<C-P>" : "<C-X>\<C-O>"
+inoremap <expr> <C-K> pumvisible() ? "<PageUp>\<C-P>\<C-N>" : "\<C-K>"
 
 " Jedi-vim
 " let g:jedi#use_tabs_not_buffers=1
