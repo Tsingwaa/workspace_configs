@@ -137,7 +137,8 @@ Plug 'chxuan/vim-buffer'
 Plug 'chxuan/vimplus-startify'
 Plug 'preservim/tagbar'
 " Plug 'ycm-core/YouCompleteMe'
-Plug 'Yggdroot/LeaderF'
+" Plug 'Yggdroot/LeaderF'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension'  }
 Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
@@ -175,6 +176,22 @@ Plug 'davidhalter/jedi-vim'
 Plug 'dense-analysis/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'ervandew/supertab'
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-packager'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'dhruvasagar/vim-zoom'
+Plug 'morhetz/gruvbox'
+Plug 'vim-python/python-syntax'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'dracula/vim', {'as': 'dracula'}
+Plug 'ayu-theme/ayu-vim'
+" Plug 'rainglow/vim'
+Plug 'arcticicestudio/nord-vim', { 'branch': 'main'  }
+Plug 'liuchengxu/space-vim-dark'
+Plug 'jdkanani/vim-material-theme'
+Plug 'sainnhe/everforest'
+
+" Plug 'inkarkat/vim-mark'
 
 call plug#end()
 
@@ -192,9 +209,10 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 "打开文件时不进行检查
 let g:ale_lint_on_enter = 1
 " Set this variable to 1 to fix files when you save them.
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 " 普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
-let g:ale_open_list = 1
+let g:ale_open_list = 0
+" let g:ale_exclude_highlights = ['line too long']
 " let g:ale_keep_list_window_open = 1
 nmap sp <Plug>(ale_previous_wrap)
 nmap sn <Plug>(ale_next_wrap)
@@ -203,7 +221,7 @@ nmap <Leader>S :ALEToggle<CR>
 " <Leader>D 查看错误或警告的详细信息
 nmap <Leader>D :ALEDetail<CR>
 " 对python使用pylint进行语法检查
-let g:ale_linters = {'python': ['flake8', 'mypy', 'pyls'],}
+let g:ale_linters = {'python': ['flake8'],}
 let g:ale_fixers = {
             \'*': ['remove_trailing_lines', 'trim_whitespace'],
             \'python': ['yapf', 'isort', 'add_blank_lines_for_python_control_statements', 'autopep8']
@@ -250,10 +268,14 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "
 " 主题设置
 set background=dark
 let g:onedark_termcolors=256
-colorscheme molokai
+" colorscheme molokai
+" colorscheme gruvbox
+colorscheme dracula
 
 " airline
-let g:airline_theme="onedark"
+" let g:airline_theme="onedark"
+" let g:airline_theme="gruvbox"
+let g:airline_theme="dracula"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#ale#enabled = 1
@@ -278,7 +300,7 @@ inoremap <silent> <F12> <esc> :ShowColorScheme<cr>
 " vim-buffer
 nnoremap <silent> <c-p> :PreviousBuffer<cr>
 nnoremap <silent> <c-n> :NextBuffer<cr>
-" nnoremap <silent> <leader>d :CloseBuffer<cr>
+nnoremap <silent> <leader>c :CloseBuffer<cr>
 " nnoremap <silent> <leader>D :BufOnly<cr>
 
 " vim-edit
@@ -298,7 +320,7 @@ let g:NERDTreeHighlightFoldersFullName = 1
 let g:NERDTreeDirArrowExpandable='▶'
 let g:NERDTreeDirArrowCollapsible='▼'
 let g:NERDTreeIgnore = ['__pycache__', '\.pyc$', '\.tar']
-let g:NERDTreeWinSize = 40
+let g:NERDTreeWinSize = 50
 
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
@@ -308,6 +330,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 " tagbar
 let g:tagbar_width = 50
 nnoremap <silent> <leader>t :TagbarToggle<cr>
+let g:tagbar_sort=0
 
 " incsearch.vim
 map /  <Plug>(incsearch-forward)
@@ -349,8 +372,8 @@ nnoremap <leader>F :Ack!<space>
 " let g:echodoc#type = 'floating'
 
 " tabular
-" nnoremap <leader>l :Tab /\|<cr>
-" nnoremap <leader>= :Tab /=<cr>
+nnoremap <leader>l :Tab /\|<cr>
+nnoremap <leader>= :Tab /=<cr>
 
 " vim-smooth-scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
@@ -381,8 +404,8 @@ inoremap <expr> <C-K> pumvisible() ? "<PageUp>\<C-P>\<C-N>" : "\<C-K>"
 let g:jedi#smart_auto_mappings=1
 let g:jedi#popup_on_dot = 0
 " let g:jedi#environment_path=""
-" let g:jedi#show_call_signatures = "1"
-" let g:jedi#goto_command = ""
+let g:jedi#show_call_signatures = "1"
+let g:jedi#goto_command = "<leader>g"
 " let g:jedi#goto_definitions_command = "<leader>d"
 " let g:jedi#goto_assignments_command = "<leader>g"
 " let g:jedi#goto_stubs_command = "<leader>s"

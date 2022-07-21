@@ -2,8 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/chenghua/.oh-my-zsh"
-export DEVICE=31
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -61,7 +60,7 @@ COMPLETION_WAITING_DOTS="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy.mm.dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -98,28 +97,50 @@ bindkey ',' autosuggest-accept
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/waa/Softwares/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/waa/Softwares/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/waa/Softwares/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/waa/Softwares/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source /home/chenghua/Applications/Anaconda3/bin/activate imb
+# source /home/chenghua/Applications/Anaconda3/bin/activate imb
 
-alias set_pypath="export PYTHONPATH='$HOME/Projects/classification'"
+# alias set_pypath="export PYTHONPATH='$HOME/Projects/classification'"
 
+alias vim="/usr/local/bin/vim"
+# alias python="python3"
 alias labproxy="export all_proxy='socks5://172.18.168.10:7891'"
 alias myproxy="export all_proxy='socks5://222.200.185.33:11089'"
 alias unproxy="unset all_proxy"
 
-alias gpul="git pull gitee main && git pull github main"
-alias gpsh="git push gitee main && git push github main"
-alias gpul_="git pull github"
-alias gpsh_="git push github"
+# alias gpul="git pull gitee main && git pull github main"
+# alias gpsh="git push gitee main && git push github main"
+alias gpul="git pull gitlab master"
+alias gpsh="git push gitlab master"
 alias gl="git log"
 alias gs="git status"
 alias ga="git add"
 alias gm="git commit -m"
+alias mysql_waa="mysql -u root -p"
+# alias odps="~/Softwares/odps_clt_release_64/bin/odpscmd"
 
-alias sync_vimrc="scp ~/.vimrc 15:~/; scp ~/.vimrc 16:~/; scp ~/.vimrc 97:~/; scp ~/.vimrc mac:~/; scp ~/.vimrc 247:~/;"
+# alias sync_vimrc="scp ~/.vimrc 15:~/; scp ~/.vimrc 16:~/; scp ~/.vimrc 97:~/; scp ~/.vimrc mac:~/; scp ~/.vimrc 247:~/;"
 
-alias lg="ls -al | grep $1"
-alias export_workdir="export PYTHONPATH=$PYTHONPATH:$HOME/Projects/classification"
+# alias lg="ls -al | grep $1"
+# alias export_workdir="export PYTHONPATH=$PYTHONPATH:$HOME/Projects/classification"
+
+conda activate env0
