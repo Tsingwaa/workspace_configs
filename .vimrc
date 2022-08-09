@@ -148,6 +148,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-fugitive'
+Plug 'rbong/vim-flog'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
@@ -161,6 +162,7 @@ Plug 'junegunn/gv.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-syntax'
+" Plug 'vim-syntastic/syntastic'
 Plug 'kana/vim-textobj-function'
 Plug 'sgur/vim-textobj-parameter'
 Plug 'Shougo/echodoc.vim'
@@ -180,16 +182,19 @@ Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-packager'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'dhruvasagar/vim-zoom'
-Plug 'morhetz/gruvbox'
-Plug 'vim-python/python-syntax'
+" Plug 'morhetz/gruvbox'
+" Plug 'vim-python/python-syntax'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'dracula/vim', {'as': 'dracula'}
-Plug 'ayu-theme/ayu-vim'
+" Plug 'ayu-theme/ayu-vim'
 " Plug 'rainglow/vim'
-Plug 'arcticicestudio/nord-vim', { 'branch': 'main'  }
-Plug 'liuchengxu/space-vim-dark'
-Plug 'jdkanani/vim-material-theme'
-Plug 'sainnhe/everforest'
+" Plug 'arcticicestudio/nord-vim', { 'branch': 'main'  }
+" Plug 'liuchengxu/space-vim-dark'
+" Plug 'jdkanani/vim-material-theme'
+" Plug 'sainnhe/everforest'
+"
+" Java autocomplete
+Plug 'artur-shaik/vim-javacomplete2'
 
 " Plug 'inkarkat/vim-mark'
 
@@ -272,6 +277,9 @@ let g:onedark_termcolors=256
 " colorscheme gruvbox
 colorscheme dracula
 
+" auto-pairs
+let g:AutoPairsFlyMode = 1
+
 " airline
 " let g:airline_theme="onedark"
 " let g:airline_theme="gruvbox"
@@ -320,7 +328,7 @@ let g:NERDTreeHighlightFoldersFullName = 1
 let g:NERDTreeDirArrowExpandable='▶'
 let g:NERDTreeDirArrowCollapsible='▼'
 let g:NERDTreeIgnore = ['__pycache__', '\.pyc$', '\.tar']
-let g:NERDTreeWinSize = 50
+let g:NERDTreeWinSize = 40
 
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
@@ -405,9 +413,9 @@ let g:jedi#smart_auto_mappings=1
 let g:jedi#popup_on_dot = 0
 " let g:jedi#environment_path=""
 let g:jedi#show_call_signatures = "1"
-let g:jedi#goto_command = "<leader>g"
-" let g:jedi#goto_definitions_command = "<leader>d"
-" let g:jedi#goto_assignments_command = "<leader>g"
+" let g:jedi#goto_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
 " let g:jedi#goto_stubs_command = "<leader>s"
 " let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>u"
