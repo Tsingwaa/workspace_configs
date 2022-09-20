@@ -59,7 +59,7 @@ set tabstop=4            " 设置编辑时制表符占用空格数
 set shiftwidth=4         " 设置格式化时制表符占用空格数
 set softtabstop=4        " 设置4个空格为制表符
 set smarttab             " 在行和段开始处使用制表符
-set nowrap               " 禁止折行
+set wrap                 " 禁用折行
 set backspace=2          " 使用回车键正常处理indent,eol,start等
 set sidescroll=10        " 设置向右滚动字符数
 set nofoldenable         " 禁用折叠代码
@@ -229,8 +229,12 @@ nmap <Leader>D :ALEDetail<CR>
 let g:ale_linters = {'python': ['flake8'],}
 let g:ale_fixers = {
             \'*': ['remove_trailing_lines', 'trim_whitespace'],
-            \'python': ['yapf', 'isort', 'add_blank_lines_for_python_control_statements', 'autopep8']
+            \'python': ['yapf', 'isort', 'add_blank_lines_for_python_control_statements']
             \}
+" python
+" alternative linter: pylint(严格), flake8(精简)
+" alternative fixer: yapf, black
+
 noremap <F2> :ALEFix<cr>
 
 " load vim default plugin
